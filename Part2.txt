@@ -1,0 +1,93 @@
+//------------------------------------------------------------------------
+// 1
+forEach:
+- Calls a callback function on every element in the array.
+- Always returns undefined.
+- Does not support break or continue.
+- Used when we need to execute an operation on each array element.
+
+for...of:
+- Loops directly through the values of an iterable, such as arrays and strings.
+- Supports break and continue.
+- Supports await inside an async function.
+- Used when we need greater control over the loop, such as stopping, skipping iterations, or using await.
+
+
+
+
+//------------------------------------------------------------------------
+// 2
+Hoisting: It is a JavaScript behavior where variable and function declarations are processed before the code is executed.
+
+In that example, JavaScript allows using x before its declaration because var is hoisted and automatically initialized with undefined.
+
+console.log(x); // undefined
+var x = 10;
+
+
+Temporal Dead Zone (TDZ): The TDZ is the time between entering a scope and initializing a let or const variable. Trying to access the variable during this time results in a ReferenceError.
+
+Example:
+console.log(x); // ReferenceError
+let x = 10;
+
+
+
+
+//------------------------------------------------------------------------
+// 3
+== (Loose Equality):
+Checks whether two values are equal, converting their types when needed.
+
+=== (Strict Equality):
+Checks whether two values are equal in both value and data type without converting their types.
+
+
+
+
+//------------------------------------------------------------------------
+// 4
+try-catch is used to manage errors and prevent the program from terminating unexpectedly.
+- try: Holds the code that may cause an error.
+- catch: Runs when an error is thrown inside the try block.
+- finally: Runs regardless of whether an error happens or not.
+In asynchronous operations, errors may occur when requesting data from an API or executing other tasks.
+
+async function fetchData() {
+    try {
+        let res = await fetch("https://api.example.com/users");
+        if (!res.ok) {
+            throw new Error("Failed to fetch data");
+        }
+        let data = await res.json();
+        console.log(data);
+    } catch (err) {
+        console.log("Error:", err.message);
+    }
+}
+
+Why is it important?
+- Prevents the application from crashing when errors occur.
+- Handles unsuccessful API requests.
+- Makes finding and fixing errors easier.
+- Enables the application to handle asynchronous failures properly.
+
+
+
+
+//------------------------------------------------------------------------
+// 5
+Type Conversion (Explicit): Happens when the programmer manually changes a value from one data type to another using methods such as Number(), String(), or Boolean().
+
+Example:
+let age = "25";
+let numberAge = Number(age);
+console.log(numberAge);        // 25
+console.log(typeof numberAge); // number
+
+Type Coercion (Implicit): Occurs when JavaScript automatically changes a value's data type during an operation.
+
+Example:
+let result = "5" + 3;
+console.log(result);        // "53"
+console.log(typeof result); // string
